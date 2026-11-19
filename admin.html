@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manager Dashboard | Ceylon Crust Pizza</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #101010;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    .container { max-width: 1050px; margin: auto; }
+    h1, h2 { margin-top: 0; }
+    .muted { color: #aaa; }
+    .panel {
+      background: #1b1b1b;
+      border: 1px solid #333;
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 22px;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin: 7px 0 14px;
+      border-radius: 8px;
+      font: inherit;
+    }
+    input, textarea {
+      background: #111;
+      color: white;
+      border: 1px solid #444;
+    }
+    textarea { min-height: 75px; resize: vertical; }
+    button {
+      border: 0;
+      background: #e33b25;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button.secondary { background: #333; }
+    button.danger { background: #8e2525; }
+    button.small {
+      width: auto;
+      padding: 9px 13px;
+      margin: 5px 5px 5px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .item {
+      border: 1px solid #383838;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 12px;
+    }
+    .item h3 { margin: 0 0 8px; }
+    .hidden { display: none !important; }
+    .status { color: #ffb34d; min-height: 20px; }
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .top button { width: auto; }
+    label { color: #ccc; font-size: 14px; }
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .checkbox-row input { width: auto; margin: 0; }
+    @media (max-width: 650px) {
+      body { padding: 14px; }
+      .grid { grid-template-columns: 1fr; }
+      .panel { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section id="loginPanel" class="panel">
+      <h1>Manager Login</h1>
+      <p class="muted">Ceylon Crust Pizza</p>
+
+      <form id="loginForm">
+        <label>Email address</label>
+        <input id="loginEmail" type="email"
+          value="ceylonecrustpizza@gmail.com" required>
+
+        <label>Password</label>
+        <input id="loginPassword" type="password"
+          placeholder="Enter manager password" required>
+
+        <button type="submit">Sign In</button>
+      </form>
+      <p id="loginMessage" class="status"></p>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="top">
+        <div>
+          <h1>Manager Dashboard</h1>
+          <p class="muted">Ceylon Crust Pizza</p>
+        </div>
+        <button id="logoutButton" class="secondary">Sign Out</button>
+      </div>
+
+      <section class="panel">
+        <h2>WhatsApp Business Number</h2>
+        <p class="muted">Enter the number with country code, digits only.</p>
+        <label>WhatsApp number</label>
+        <input id="whatsappNumber" type="tel"
+          placeholder="Example: 971501234567">
+        <button id="saveWhatsapp">Save WhatsApp Number</button>
+        <p id="whatsappMessage" class="status"></p>
+      </section>
+
+      <section class="panel">
+        <h2 id="formHeading">Add New Menu Item</h2>
+
+        <form id="itemForm">
+          <label>Item name</label>
+          <input id="itemName" type="text"
+            placeholder="Example: Chicken BBQ Pizza" required>
+
+          <div class="grid">
+            <div>
+              <label>Price (AED)</label>
+              <input id="itemPrice" type="number"
+                min="0" step="0.01" placeholder="13" required>
+            </div>
+            <div>
+              <label>Category</label>
+              <input id="itemCategory" type="text"
+                placeholder="Pizza, Drinks, Sides..." required>
+            </div>
+          </div>
+
+          <label>Description</label>
+          <textarea id="itemDescription"
+            placeholder="Describe the food item"></textarea>
+
+          <label>Image filename</label>
+          <input id="itemImage" type="text"
+            placeholder="chicken-bbq.jpg">
+          <p class="muted">
+            Upload the image to assets/pizzas/ in GitHub first.
+            Enter its exact filename here.
+          </p>
+
+          <label class="checkbox-row">
+            <input id="itemAvailable" type="checkbox" checked>
+            Available for customers
+          </label>
+
+          <button type="submit" id="saveItemButton">Add Menu Item</button>
+          <button type="button" id="cancelEditButton"
+            class="secondary hidden">Cancel Editing</button>
+        </form>
+        <p id="itemMessage" class="status"></p>
+      </section>
+
+      <section class="panel">
+        <h2>Manage Menu</h2>
+        <p class="muted">Your menu items appear here automatically.</p>
+        <div id="itemsList">Loading menu...</div>
+      </section>
+    </section>
+  </main>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
