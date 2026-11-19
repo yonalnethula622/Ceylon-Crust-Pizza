@@ -1,6 +1,393 @@
-<header><title>CEYLON CRUST PIZZA</title></header>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+
+  <title>Ceylon Crust Pizza | Freshly Made Pizza</title>
+
+  <meta name="description" content="Order freshly made pizzas from Ceylon Crust Pizza. Explore our menu and order through WhatsApp.">
+
+  <link rel="icon" href="assets/logo.png">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+
 <body>
-  <h1><center>
-    _____WELCOME_____
-  </center></h1>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container nav-container">
+
+      <a href="#" class="brand">
+        <div class="brand-icon">🍕</div>
+        <div class="brand-text">
+          <span>CEYLON CRUST</span>
+          <small>PIZZA</small>
+        </div>
+      </a>
+
+      <nav class="navigation">
+        <a href="#home">Home</a>
+        <a href="#menu">Our Menu</a>
+        <a href="#about">About Us</a>
+      </nav>
+
+      <button class="cart-button" id="openCart">
+        <span>🛒</span>
+        <span class="cart-label">Cart</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+
+      <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Open menu">
+        ☰
+      </button>
+
+    </div>
+  </header>
+
+
+  <!-- MOBILE NAVIGATION -->
+  <div class="mobile-navigation" id="mobileNavigation">
+    <a href="#home">Home</a>
+    <a href="#menu">Our Menu</a>
+    <a href="#about">About Us</a>
+  </div>
+
+
+  <!-- HERO SECTION -->
+  <main>
+
+    <section class="hero" id="home">
+      <div class="container hero-content">
+
+        <div class="hero-text">
+
+          <div class="hero-tag">
+            <span class="tag-dot"></span>
+            FRESHLY MADE, FULL OF FLAVOUR
+          </div>
+
+          <h1>
+            A SLICE OF<br>
+            <span>HAPPINESS.</span>
+          </h1>
+
+          <p>
+            Fresh ingredients, delicious flavours and
+            perfectly baked pizzas. Your next favourite
+            pizza is waiting for you.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#menu" class="primary-button">
+              Explore Our Menu <span>→</span>
+            </a>
+          </div>
+
+          <div class="hero-info">
+            <div>
+              <strong>FRESH</strong>
+              <small>Ingredients</small>
+            </div>
+
+            <div>
+              <strong>MADE</strong>
+              <small>With Care</small>
+            </div>
+
+            <div>
+              <strong>FULL</strong>
+              <small>Of Flavour</small>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="hero-image">
+          <img
+            src="assets/pizzas/hero-pizza.jpg"
+            alt="Freshly baked pizza"
+            onerror="this.style.display='none'"
+          >
+          <div class="hero-image-decoration">🍕</div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- MENU SECTION -->
+    <section class="menu-section" id="menu">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <span class="section-label">DISCOVER OUR FLAVOURS</span>
+            <h2>Our <span>Menu.</span></h2>
+            <p>Made fresh. Served with love.</p>
+          </div>
+
+          <div class="menu-count">
+            <span id="menuItemCount">0</span> Items
+          </div>
+        </div>
+
+
+        <!-- CATEGORY FILTERS -->
+        <div class="menu-categories" id="menuCategories">
+          <button class="category-button active" data-category="All">
+            All Items
+          </button>
+        </div>
+
+
+        <!-- MENU ITEMS ARE AUTOMATICALLY CREATED HERE -->
+        <div class="menu-grid" id="menuGrid">
+
+          <div class="menu-loading">
+            <div class="loading-spinner"></div>
+            <p>Preparing our delicious menu...</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section" id="about">
+      <div class="container about-content">
+
+        <div class="about-symbol">🍕</div>
+
+        <div>
+          <span class="section-label">OUR STORY</span>
+          <h2>Good Pizza.<br><span>Good Moments.</span></h2>
+
+          <p>
+            At Ceylon Crust Pizza, we believe great pizza
+            brings people together. Every pizza is prepared
+            with care and packed with flavour.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+
+      <div class="brand">
+        <div class="brand-icon">🍕</div>
+        <div class="brand-text">
+          <span>CEYLON CRUST</span>
+          <small>PIZZA</small>
+        </div>
+      </div>
+
+      <p>Freshly made. Full of flavour.</p>
+
+      <p class="copyright">
+        © <span id="currentYear"></span> Ceylon Crust Pizza. All rights reserved.
+      </p>
+
+    </div>
+  </footer>
+
+
+  <!-- CART OVERLAY -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+
+  <!-- SHOPPING CART -->
+  <aside class="cart-drawer" id="cartDrawer">
+
+    <div class="cart-header">
+      <div>
+        <span class="section-label">YOUR SELECTION</span>
+        <h2>Your Cart</h2>
+      </div>
+
+      <button class="close-button" id="closeCart" aria-label="Close cart">
+        ×
+      </button>
+    </div>
+
+    <div class="cart-items" id="cartItems">
+
+      <div class="empty-cart">
+        <span>🛒</span>
+        <h3>Your cart is empty</h3>
+        <p>Discover something delicious from our menu.</p>
+      </div>
+
+    </div>
+
+    <div class="cart-footer">
+
+      <div class="cart-total">
+        <span>Subtotal</span>
+        <strong id="cartTotal">AED 0.00</strong>
+      </div>
+
+      <button class="checkout-button" id="checkoutButton" disabled>
+        Proceed to Checkout →
+      </button>
+
+      <p class="cart-note">Your order will be confirmed through WhatsApp.</p>
+
+    </div>
+
+  </aside>
+
+
+  <!-- CHECKOUT PAGE -->
+  <section class="checkout-section" id="checkoutSection">
+
+    <div class="container checkout-container">
+
+      <button class="back-button" id="backToMenu">
+        ← Back to menu
+      </button>
+
+      <div class="checkout-heading">
+        <span class="section-label">ALMOST THERE!</span>
+        <h1>Complete Your <span>Order.</span></h1>
+        <p>Please enter your delivery details below.</p>
+      </div>
+
+
+      <div class="checkout-layout">
+
+        <!-- CUSTOMER DETAILS -->
+        <div class="checkout-form-card">
+
+          <h2>Delivery Information</h2>
+
+          <form id="checkoutForm">
+
+            <div class="form-group">
+              <label for="customerName">Full Name *</label>
+              <input
+                type="text"
+                id="customerName"
+                name="customerName"
+                placeholder="Enter your full name"
+                maxlength="80"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="customerPhone">Phone Number *</label>
+              <input
+                type="tel"
+                id="customerPhone"
+                name="customerPhone"
+                placeholder="Enter your phone number"
+                maxlength="20"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="customerAddress">Delivery Address *</label>
+              <textarea
+                id="customerAddress"
+                name="customerAddress"
+                placeholder="Enter your complete delivery address"
+                rows="4"
+                maxlength="500"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="checkout-button">
+              Confirm Order →
+            </button>
+
+          </form>
+
+        </div>
+
+
+        <!-- ORDER SUMMARY -->
+        <div class="order-summary-card">
+
+          <h2>Order Summary</h2>
+
+          <div id="checkoutItems"></div>
+
+          <div class="summary-total">
+            <span>Total</span>
+            <strong id="checkoutTotal">AED 0.00</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- WHATSAPP CONFIRMATION -->
+  <section class="confirmation-section" id="confirmationSection">
+
+    <div class="confirmation-card">
+
+      <div class="confirmation-icon">✓</div>
+
+      <span class="section-label">ONE LAST STEP</span>
+
+      <h1>Order Details <span>Ready!</span></h1>
+
+      <p>
+        Your order message is ready. Please open WhatsApp
+        and send the message to Ceylon Crust Pizza to
+        confirm your order.
+      </p>
+
+      <div class="confirmation-total">
+        <span>Your Order Total</span>
+        <strong id="confirmationTotal">AED 0.00</strong>
+      </div>
+
+      <a
+        href="#"
+        class="whatsapp-button"
+        id="whatsappButton"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>◉</span> Go to WhatsApp
+      </a>
+
+      <button class="back-button confirmation-back" id="continueShopping">
+        Continue Shopping
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- JAVASCRIPT -->
+  <script src="firebase.js" type="module"></script>
+  <script src="script.js" type="module"></script>
+
 </body>
+</html>
