@@ -12,6 +12,7 @@ import {
   onSnapshot,
   serverTimestamp,
   signInWithEmailAndPassword,
+  sendEmailVerification,
   signOut,
   onAuthStateChanged
 } from "./firebase.js";
