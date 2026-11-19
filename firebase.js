@@ -78,7 +78,8 @@ export {
 
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged
+  onAuthStateChanged,
+  sendEmailVerification
 };
 
 console.log("Ceylon Crust Firebase Connected");
