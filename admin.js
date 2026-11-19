@@ -47,11 +47,22 @@ $("loginForm").addEventListener("submit", async (event) => {
   showMessage("loginMessage", "Signing in...");
 
   try {
-    await signInWithEmailAndPassword(
+    const result = await signInWithEmailAndPassword(
       auth,
       $("loginEmail").value.trim(),
       $("loginPassword").value
     );
+
+    if (!result.user.emailVerified) {
+      await sendEmailVerification(result.user);
+      await signOut(auth);
+
+      showMessage(
+        "loginMessage",
+        "Verification email sent! Check your inbox and click the verification link."
+      );
+    }
+
   } catch (error) {
     showMessage("loginMessage", error.message);
   }
