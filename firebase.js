@@ -1,14 +1,14 @@
 
 // ============================================
-// CEYLON CRUST ORDER
-// FIREBASE CONFIGURATION
+// CEYLON CRUST PIZZA
+// NEW FIREBASE CONNECTION
 // ============================================
 
 // FIREBASE APP
 import { initializeApp } from
   "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
 
-// FIRESTORE DATABASE
+// FIRESTORE
 import {
   getFirestore,
   collection,
@@ -24,7 +24,7 @@ import {
 } from
   "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js";
 
-// FIREBASE AUTHENTICATION
+// AUTHENTICATION
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -34,20 +34,18 @@ import {
 } from
   "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
 
-
 // ============================================
-// FIREBASE CONFIGURATION
+// NEW FIREBASE CONFIGURATION
 // ============================================
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDdkQBV6MzSdwpp0icpBRzm_uADWAK9Nwo",
-  authDomain: "ceylon-crust-order.firebaseapp.com",
-  projectId: "ceylon-crust-order",
-  storageBucket: "ceylon-crust-order.firebasestorage.app",
-  messagingSenderId: "401112865099",
-  appId: "1:401112865099:web:cf680e2d7d3de887b770ce"
+  apiKey: "AIzaSyCiSTF2wkYTdM8raL0TnQBTQPNiTqfJw6Y",
+  authDomain: "ceylon-crust-order-new-4.firebaseapp.com",
+  projectId: "ceylon-crust-order-new-4",
+  storageBucket: "ceylon-crust-order-new-4.firebasestorage.app",
+  messagingSenderId: "780548601176",
+  appId: "1:780548601176:web:09e84cddcc86361b82212d"
 };
-
 
 // ============================================
 // INITIALIZE FIREBASE
@@ -55,23 +53,14 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-
-// ============================================
 // FIRESTORE DATABASE
-// ============================================
-
 const db = getFirestore(app);
 
-
-// ============================================
 // AUTHENTICATION
-// ============================================
-
 const auth = getAuth(app);
 
-
 // ============================================
-// EXPORT EVERYTHING
+// EXPORT FUNCTIONS
 // ============================================
 
 export {
@@ -98,4 +87,4 @@ export {
   onAuthStateChanged
 };
 
-console.log("Ceylon Crust Firebase Connected");
+console.log("Ceylon Crust Pizza: New Firebase Connected!");
